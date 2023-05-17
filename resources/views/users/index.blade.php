@@ -45,14 +45,14 @@
                     </form>
 
                 </div>
-                <div class="row" id="recommendation-table">
+                <div class="row" id="etable">
                     @if(isset($users) && !empty($users))
                         @foreach ($users as $user)
-                            <div class="col-sm-6 mb-3 p-0 emp-card" id="{{ $user['department']['name'] }}">
+                            <div class="col-sm-6 mb-3 p-0 emp-card" id="{{ $user['dept']['name'] }}">
                                 <div class="card mb-3 mx-2 p-3 h-100">
                                     <div class="pl-3">
                                         <div class="">{{ $user['name'] ?? '' }}</div>
-                                        <div class="name">{{ $user['department']['name'] ?? '' }}</div>
+                                        <div class="name">{{ $user['dept']['name'] ?? '' }}</div>
                                         <div class="">{{ $user['designation']['name'] ?? '' }}</div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
 
     // sort table by ascending order
     function sortByDateAsc() {
-        var rowval = document.querySelector("#recommendation-table");
+        var rowval = document.querySelector("#etable");
         var cards = [].slice.call(rowval.querySelectorAll(".emp-card"));
         rowsList = cards.sort(function(a, b) {
             //Comparing for strings instead of numbers

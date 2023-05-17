@@ -12,15 +12,15 @@ class User extends Model
     /**
      * Get the department that owns the user.
      */
-    public function department()
+    public function dept()
     {
-        return $this->belongsTo('App\models\Department', 'Fk_department', 'id');
+        return $this->belongsTo(Department::class, 'Fk_department', 'id');
     }
     /**
      * Get the designation that owns the user.
      */
     public function designation()
     {
-        return $this->belongsTo('App\models\Designation', 'Fk_designation', 'id');
+        return $this->belongsTo(Designation::class, 'Fk_designation', 'id');
     }
 }

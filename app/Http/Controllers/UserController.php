@@ -15,7 +15,7 @@ class UserController extends Controller
         try {
             $users = User::all();
             foreach ($users as $key => $user) {
-                $user->department;
+                $user->dept;
                 $user->designation;
             }
             $data['users'] = json_decode($users, true);
@@ -33,14 +33,16 @@ class UserController extends Controller
     {
         try {
             $search = $_GET['search'];
-            $users = User::where('Fk_department', 'LIKE', "%$search%")->orWhere('Fk_designation', 'LIKE', "%$search%")->orWhere('name', 'LIKE', "%$search%")->get();
+            $users = User::with(['dept', 'designation'])->where('Fk_department', 'LIKE', "%$search%")->orWhere('Fk_designation', 'LIKE', "%$search%")
+            ->orWhere('name', 'LIKE', "%$search%")->get();
             dd($users);
             foreach ($users as $key => $user) {
-                $user->department;
+                $user->dept;
                 $user->designation;
             }
             $data['search'] = $search;
             $data['users'] = json_decode($users, true);
+
             return view('users.index', $data);
         } catch (Exception $e) {
             return $e->getMessage();

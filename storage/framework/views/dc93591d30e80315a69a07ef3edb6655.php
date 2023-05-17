@@ -45,14 +45,14 @@
                     </form>
 
                 </div>
-                <div class="row" id="recommendation-table">
+                <div class="row" id="etable">
                     <?php if(isset($users) && !empty($users)): ?>
                         <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-sm-6 mb-3 p-0 emp-card" id="<?php echo e($user['dpt']['name']); ?>">
+                            <div class="col-sm-6 mb-3 p-0 emp-card" id="<?php echo e($user['dept']['name']); ?>">
                                 <div class="card mb-3 mx-2 p-3 h-100">
                                     <div class="pl-3">
                                         <div class=""><?php echo e($user['name'] ?? ''); ?></div>
-                                        <div class="name"><?php echo e($user['department']['name'] ?? ''); ?></div>
+                                        <div class="name"><?php echo e($user['dept']['name'] ?? ''); ?></div>
                                         <div class=""><?php echo e($user['designation']['name'] ?? ''); ?></div>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
 
     // sort table by ascending order
     function sortByDateAsc() {
-        var rowval = document.querySelector("#recommendation-table");
+        var rowval = document.querySelector("#etable");
         var cards = [].slice.call(rowval.querySelectorAll(".emp-card"));
         rowsList = cards.sort(function(a, b) {
             //Comparing for strings instead of numbers
